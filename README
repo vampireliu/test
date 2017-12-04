@@ -1,0 +1,32 @@
+run newtld
+
+cd src
+cmake .
+./tld -p ../parameters.yml -s ../datasets/01_david/david.mpg
+
+
+
+%To run from camera
+./run_tld -p ../parameters.yml
+%To run from file
+./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg
+%To init bounding box from file
+david
+./run_tld -p ../parameters.yml -s ../datasets/01_david/david.mpg -b ../datasets/01_david/init.txt
+jumping
+./run_tld -p ../parameters.yml -s ../datasets/02_jumping/jumping.mpg -b ../datasets/02_jumping/init.txt
+car
+./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg -b ../datasets/06_car/init.txt
+panda
+./run_tld -p ../parameters.yml -s ../datasets/10_panda/panda.mpg -b ../datasets/10_panda/init.txt
+
+
+
+
+
+
+
+%To train only in the firs frame (no tracking, no learning)
+./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg -b ../datasets/06_car/init.txt -no_tl 
+%To test the final detector (Repeat the video, first time learns, second time detects)
+./run_tld -p ../parameters.yml -s ../datasets/06_car/car.mpg -b ../datasets/06_car/init.txt -r
